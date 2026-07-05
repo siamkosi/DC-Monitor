@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm.cmd run build",
+    "deploy": "gh-pages -d dist --repo https://github.com/siamkosi/DC-Monitor.git"
   },
   "dependencies": {
     "echarts": "^6.1.0",
