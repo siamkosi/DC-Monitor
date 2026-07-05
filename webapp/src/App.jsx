@@ -32,7 +32,12 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
   
   // Google Sheets Integration State
-  const [sheetId, setSheetId] = useState(() => localStorage.getItem('manpower_sheet_id') || '');
+  const DEFAULT_SHEET_ID = '1qiqlWErO3rqnR0hAzgizehCr3y54nS-SlnCrJaGutY';
+  const [sheetId, setSheetId] = useState(() => {
+    const saved = localStorage.getItem('manpower_sheet_id');
+    if (saved === 'demo') return '';
+    return saved || DEFAULT_SHEET_ID;
+  });
   const [tempSheetId, setTempSheetId] = useState(sheetId);
   const [data, setData] = useState(localJsonData);
   const [loading, setLoading] = useState(false);
@@ -61,7 +66,7 @@ export default function App() {
     if (!id || id.trim() === '') {
       setData(localJsonData);
       setSheetId('');
-      localStorage.removeItem('manpower_sheet_id');
+      localStorage.setItem('manpower_sheet_id', 'demo');
       setError(null);
       return;
     }
@@ -73,8 +78,8 @@ export default function App() {
       const sheetsData = {};
       
       for (const sheet of sheets) {
-        // Fetch published CSV from Google Sheets GViz endpoint (CORS-friendly)
-        const url = `https://docs.google.com/spreadsheets/d/${id}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(sheet)}`;
+        // Fetch published CSV from Google Sheets GViz endpoint (CORS-friendly) with cache-buster
+        const url = `https://docs.google.com/spreadsheets/d/${id}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(sheet)}&t=${Date.now()}`;
         const res = await fetch(url);
         if (!res.ok) {
           throw new Error(`ไม่สามารถดึงข้อมูลแผ่นงาน "${sheet}" ได้ โปรดตรวจสอบว่าแชร์ไฟล์เป็นสาธารณะหรือยัง`);
