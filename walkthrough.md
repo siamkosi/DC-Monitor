@@ -37,22 +37,36 @@ Choose one of the following two free methods to deploy your dashboard webapp to 
 
 ### Method A: Vercel Deployment (Recommended - Easiest)
 
-Vercel provides zero-configuration hosting for static web apps.
+Vercel provides seamless hosting for static web apps. Since your repository is hosted on GitHub, you can link it directly in the Vercel Dashboard, or use the Vercel CLI.
 
-1. **Install Vercel CLI globally (or run via npx)**:
-   Open a terminal inside your project's `webapp` directory (`d:/Sandbox/DC/webapp`) and run:
+#### Option 1: Vercel Git Integration (Automatic Deployments - Recommended)
+Since the React app is located in the `webapp` subdirectory, we have created a root-level `[vercel.json](file:///d:/Sandbox/DC/vercel.json)` file to configure the build process:
+1. **Push the changes** (`vercel.json` and the updated `vite.config.js`) to your GitHub repository:
+   ```bash
+   git add vercel.json webapp/vite.config.js
+   git commit -m "Configure Vercel build settings"
+   git push origin main
+   ```
+2. **Link to Vercel**: If you haven't linked the project yet:
+   - Go to [Vercel Dashboard](https://vercel.com/dashboard) and click **Add New > Project**.
+   - Import your `DC-Monitor` repository.
+   - Click **Deploy**. Vercel will read `vercel.json` at the root, automatically run the build inside `webapp`, and serve the app on your custom domain (e.g. `dc-monitor.vercel.app`).
+3. Vercel will now automatically trigger a rebuild and deploy every time you push new commits to your GitHub repository.
+
+#### Option 2: Local CLI Deployment
+If you prefer deploying manually via the Vercel CLI:
+1. Open a terminal inside your project's `webapp` directory (`d:/Sandbox/DC/webapp`) and run:
    ```bash
    npx vercel
    ```
-2. **Follow the CLI Prompts**:
+2. Follow the CLI Prompts:
    - *Set up and deploy?* Yes (y)
    - *Which scope?* (Select your Vercel account)
    - *Link to existing project?* No (n)
-   - *What's your project's name?* `manpower-control-dashboard` (or choose any name)
+   - *What's your project's name?* `dc-monitor` (or choose any name)
    - *In which directory is your code located?* `./`
    - *Want to modify settings?* No (n)
-3. **Deployment Complete**:
-   Vercel will bundle your app and print a live URL (e.g., `https://manpower-control-dashboard.vercel.app/`). Anyone can access it. To update it in the future, simply run `npx vercel --prod` again in the `webapp` folder.
+3. To update it in the future, run `npx vercel --prod` in the `webapp` folder.
 
 ---
 
