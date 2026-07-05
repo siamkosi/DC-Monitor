@@ -32,7 +32,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
   
   // Google Sheets Integration State
-  const DEFAULT_SHEET_ID = '1giqlWErO3rqnR0hAzgizehCr3y54nS-SlnCrJaGutY';
+  const DEFAULT_SHEET_ID = '1giqlWErO3rqnR0hAzgiZehCr3y54nS-SInCrJZaGutY';
   const [sheetId, setSheetId] = useState(() => {
     const saved = localStorage.getItem('manpower_sheet_id');
     if (saved === 'demo') return '';
