@@ -1,0 +1,21 @@
+# Python virtual environment
+.venv/
+__pycache__/
+*.pyc
+
+# Node dependencies and builds
+webapp/node_modules/
+webapp/dist/
+webapp/.svelte-kit/
+webapp/.vercel/
+
+# Local configuration files
+webapp/.env.local
+webapp/.env.*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
