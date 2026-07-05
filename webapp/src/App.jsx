@@ -825,6 +825,31 @@ export default function App() {
 
             </div>
 
+            {/* Analysis Explanation Section */}
+            <div className="bg-white dark:bg-[#0c0c0f] border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm space-y-4 mt-6">
+              <div className="flex items-center gap-2 border-b border-zinc-100 dark:border-zinc-800 pb-3">
+                <HelpCircle className="w-5 h-5 text-blue-500" />
+                <h3 className="text-sm font-extrabold text-zinc-950 dark:text-zinc-50">ข้อมูลและคำอธิบายการวิเคราะห์ (Dashboard Analysis & Info)</h3>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-zinc-500 dark:text-zinc-400">
+                <div className="space-y-2">
+                  <h4 className="font-bold text-zinc-800 dark:text-zinc-200">ที่มาของข้อมูลการวิเคราะห์:</h4>
+                  <p className="leading-relaxed">
+                    ข้อมูลแผนงานโครงการและเป้าหมายมาจากเอกสารแผนแม่บทควบคุมกำลังพล <strong>"LR9 ตารางควบคุม DC หมวด A-D"</strong> ซึ่งครอบคลุมระยะเวลาสัญญา 15 เดือน และเปรียบเทียบกับข้อมูลจำนวนแรงงานและสถิติค่าใช้จ่ายจริงที่เกิดขึ้นหน้างาน (กุมภาพันธ์ - กรกฎาคม 2026) เพื่อตรวจสอบการใช้งบประมาณจริงกับแผนการทำงานสะสม
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <h4 className="font-bold text-zinc-800 dark:text-zinc-200">ความหมายของข้อมูลที่แสดง:</h4>
+                  <ul className="list-disc pl-4 space-y-1.5 leading-relaxed">
+                    <li><strong>งบประมาณรวมตามแผนโครงการ:</strong> ประมาณการงบประมาณค่าแรงรวมทั้งหมดของหมวด A-D ตลอดอายุสัญญา 15 เดือน</li>
+                    <li><strong>ค่าแรงจ่ายจริงสะสม:</strong> ยอดค่าแรงงานสะสมที่ไซต์งานที่ได้เบิกจ่ายจริงตามชั่วโมงการทำงานจริงและอัตราจ้างจริง</li>
+                    <li><strong>ผลต่างงบประมาณ (Variance):</strong> ส่วนต่างระหว่างงบจริงกับแผนสะสม หากเป็นบวกแสดงว่าสามารถควบคุมงบประมาณได้ประหยัดกว่าเป้าหมาย (Under Budget)</li>
+                    <li><strong>อัตราเฉลี่ยแรงงานต่อเดือน:</strong> ดัชนีเปรียบเทียบจำนวนกำลังพลเฉลี่ยรายเดือน แผนงาน vs ปฏิบัติจริง ช่วยประเมินความเพียงพอของแรงงานและอัตราเข้าออกในหน้างาน</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
           </div>
         )}
 
@@ -955,6 +980,30 @@ export default function App() {
 
             </div>
 
+            {/* Analysis Explanation Section */}
+            <div className="bg-white dark:bg-[#0c0c0f] border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm space-y-4 mt-6">
+              <div className="flex items-center gap-2 border-b border-zinc-100 dark:border-zinc-800 pb-3">
+                <HelpCircle className="w-5 h-5 text-blue-500" />
+                <h3 className="text-sm font-extrabold text-zinc-950 dark:text-zinc-50">ข้อมูลและคำอธิบายการวิเคราะห์รายหมวดงาน (Category Analysis & Info)</h3>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-zinc-500 dark:text-zinc-400">
+                <div className="space-y-2">
+                  <h4 className="font-bold text-zinc-800 dark:text-zinc-200">ที่มาของข้อมูลการวิเคราะห์:</h4>
+                  <p className="leading-relaxed">
+                    ข้อมูลวิเคราะห์คำนวณแยกตามโครงสร้างหมวดควบคุมหลัก 4 หมวดงานหลัก (หมวด A, B, C และ D) จากแผนงบประมาณควบคุมกำลังพลสะสมของโครงการ เพื่อประเมินประสิทธิภาพในมิติต่างๆ ของแต่ละหมวดงานในการทำงานจริงเปรียบเทียบกับกรอบสัญญาจ้าง
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <h4 className="font-bold text-zinc-800 dark:text-zinc-200">ความหมายของข้อมูลที่แสดง:</h4>
+                  <ul className="list-disc pl-4 space-y-1.5 leading-relaxed">
+                    <li><strong>การจำแนกหมวดงาน:</strong> หมวด A (งานประจำไซต์/บำรุงรักษา), หมวด B (งานฐานราก/ชั้น 1), หมวด C (งานภายในอาคาร/ลำเลียงวัสดุ), และ หมวด D (งานภายนอก/กิจกรรมส่วนกลาง)</li>
+                    <li><strong>ดัชนีผลผลิตแรงงาน (Productivity Index):</strong> คำนวณจาก <code>งบสะสมแผน / งบสะสมจริง</code> ซึ่งหากมากกว่า 1.00 หมายถึงประสิทธิภาพการใช้จ่ายคุ้มค่ากว่างบประมาณตามเป้าหมาย หากน้อยกว่า 1.00 บ่งชี้ว่าประสิทธิภาพต่ำกว่าแผน</li>
+                    <li><strong>ผลต่างสะสมรายหมวด (Variance):</strong> แสดงให้เห็นว่างบประมาณจริงในหมวดนั้นๆ ประหยัดหรือเกินแผนไปเท่าใด เพื่อให้ผู้ควบคุมโครงการปรับปรุงการจ้างงานหรือบริหารประสิทธิภาพแรงงานเฉพาะกลุ่มได้อย่างตรงจุด</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
           </div>
         )}
 
@@ -1083,6 +1132,30 @@ export default function App() {
               </div>
             </div>
 
+            {/* Analysis Explanation Section */}
+            <div className="bg-white dark:bg-[#0c0c0f] border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm space-y-4 mt-6">
+              <div className="flex items-center gap-2 border-b border-zinc-100 dark:border-zinc-800 pb-3">
+                <HelpCircle className="w-5 h-5 text-blue-500" />
+                <h3 className="text-sm font-extrabold text-zinc-950 dark:text-zinc-50">ข้อมูลและคำอธิบายแผนกำลังพลรายตำแหน่ง (Manpower Backup Analysis & Info)</h3>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-zinc-500 dark:text-zinc-400">
+                <div className="space-y-2">
+                  <h4 className="font-bold text-zinc-800 dark:text-zinc-200">ที่มาของข้อมูลการวิเคราะห์:</h4>
+                  <p className="leading-relaxed">
+                    ตารางนี้จัดทำขึ้นโดยการสกัดและวิเคราะห์ข้อมูลแผนจัดสรรกำลังพลและจ้างงานรายบุคคลจากเอกสารแนบท้ายสัญญาโครงการ (Manpower Backup List) โดยระบบนำเสนอจำนวนกำลังพลที่ตกลงไว้ในแผนแม่บทในระดับย่อย เพื่อเปรียบเทียบภาระงานตามตำแหน่ง
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <h4 className="font-bold text-zinc-800 dark:text-zinc-200">ความหมายของข้อมูลที่แสดง:</h4>
+                  <ul className="list-disc pl-4 space-y-1.5 leading-relaxed">
+                    <li><strong>สะสมคน-เดือน (Man-Months):</strong> หน่วยนับปริมาณแรงงานสะสมตลอดอายุโครงการ (ตัวอย่างเช่น 15 คน-เดือน หมายถึง ใช้แรงงานตำแหน่งนี้ 1 คน เป็นเวลา 15 เดือน หรือใช้ 15 คน ในระยะเวลา 1 เดือน)</li>
+                    <li><strong>รหัสควบคุม / หมายเหตุ:</strong> รหัสมาตรฐานที่ใช้อ้างอิงการจัดสรรงานและความรับผิดชอบของแรงงานตามขอบเขตงาน เพื่อควบคุมกำลังพลไม่ให้ทำงานซ้ำซ้อนหรือเกินกรอบวงเงินงบประมาณ</li>
+                    <li><strong>แผนความต้องการรายเดือน:</strong> อัตรากำลังพล (จำนวนคนต่อวัน) ที่ต้องมีในแต่ละเดือนตามรอบงานการก่อสร้าง เพื่อช่วยในการวางแผนเรียกกำลังพลเข้าไซต์งาน (Mobilization Plan)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
           </div>
         )}
 
@@ -1203,6 +1276,30 @@ export default function App() {
                 </div>
               </div>
 
+            </div>
+
+            {/* Analysis Explanation Section */}
+            <div className="bg-white dark:bg-[#0c0c0f] border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm space-y-4 mt-6">
+              <div className="flex items-center gap-2 border-b border-zinc-100 dark:border-zinc-800 pb-3">
+                <HelpCircle className="w-5 h-5 text-blue-500" />
+                <h3 className="text-sm font-extrabold text-zinc-950 dark:text-zinc-50">ข้อมูลและคำอธิบายสถิติกำลังพลหน้างานจริง (Monthly Zone Analysis & Info)</h3>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-zinc-500 dark:text-zinc-400">
+                <div className="space-y-2">
+                  <h4 className="font-bold text-zinc-800 dark:text-zinc-200">ที่มาของข้อมูลการวิเคราะห์:</h4>
+                  <p className="leading-relaxed">
+                    มาจากการสรุปรายงานผลการทำงานประจำวันและการบันทึกจัดสรรกำลังพลหน้างานจริง (Daily Site Report) สะสมรายเดือนแยกตามพื้นที่ปฏิบัติงาน (Zones) และแยกตามหมวดงานย่อย เพื่อให้สามารถติดตามการกระจายแรงงานจริงในแต่ละสัปดาห์/เดือน
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <h4 className="font-bold text-zinc-800 dark:text-zinc-200">ความหมายของข้อมูลที่แสดง:</h4>
+                  <ul className="list-disc pl-4 space-y-1.5 leading-relaxed">
+                    <li><strong>สัดส่วนกำลังพลจริงแยกตามพื้นที่ (Zone Distribution):</strong> แสดงการวิเคราะห์ความสอดคล้องของการนำแรงงานลงปฏิบัติการตามโซนต่างๆ (เช่น Zone A-Central, Zone B, Zone 1, ป้อมยาม) เพื่อไม่ให้เกิดความหนาแน่นหรือคอขวดในจุดที่ไม่มีเนื้องานวิกฤต</li>
+                    <li><strong>คนจ่ายจริง (Actual Headcount):</strong> ยอดสะสมจำนวนคนปฏิบัติงานจริงเฉลี่ยในเดือนนั้นๆ ในกิจกรรมย่อยที่ระบุ</li>
+                    <li><strong>กิจกรรม / หมวดงานย่อย:</strong> รหัสกิจกรรมก่อสร้างพร้อมคำอธิบายประเภทงานที่หน้างาน เพื่อจัดสรรหน้าที่ตามความชำนาญของกำลังพลและควบคุมต้นทุนให้มีประสิทธิภาพสูงสุด</li>
+                  </ul>
+                </div>
+              </div>
             </div>
 
           </div>
